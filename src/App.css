@@ -1,0 +1,37 @@
+.App {
+  background-color: rgb(255, 233, 192);
+  min-height: 100vh;
+}
+
+.test-btn {
+  background-color: red;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.slider {
+  color: #2e8b57;
+  scrollbar-track-color: black;
+
+}
+
+.button {
+  background-color: #2e8b57;
+}
+
+.button:hover {
+  background-color: #104b2a;
+}
+
+.slider:hover {
+  color: #2e8b57;
+}
+
+/* @media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+} */
+
+.App-link {
+  color: #61dafb;
+}

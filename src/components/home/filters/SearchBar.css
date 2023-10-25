@@ -1,0 +1,25 @@
+.keep-search {
+    margin-right: 2%;
+    width: 300px;
+    margin-top: 3%;
+    float: right;
+}
+
+.btn-container {
+    margin-top: 3%;
+    margin-right: 6%;
+    float: right;
+}
+
+.keep-search-btn {
+    margin-top: 10%;
+    color: forestgreen;
+    border-color: forestgreen;
+}
+
+.keep-search-btn:hover {
+    margin-top: 10%;
+    color: forestgreen;
+    border-color: forestgreen;
+    background-color: rgba(34, 139, 34, 0.13);
+}
