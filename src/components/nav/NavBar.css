@@ -1,6 +1,6 @@
  .navbar-container {
     position: fixed;
-    background-color: rgb(62, 155, 62);
+    background-color: rgb(138, 155, 62);
     width: 100%;
     display: flex;
   }
@@ -13,26 +13,34 @@
 }
 
 .nav-icon{
-    margin-left: 32%;
-}
+  margin-left: 33%;
+  
+  .title{
+    margin-top: 10px;
+    font-size: 27px;
+    font-weight: 600;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #ffcc7a;
 
+  }
+}
 .navbar-right{
     display: flex;
+    justify-content: right;
     list-style: none;
-    margin-left: 18%;
+    margin-left: 31%;
 }
 .navbar-item {
-    flex-basis: 20%;
     list-style-type: none;
     color: var(--offWhite);
 }
 
 .navbar-item-left{
-    padding-left: 20%;
+    padding-left: 30%;
 }
 
 .navbar-item-right{
-    padding-right: 20%;
+    padding-right: 30%;
 }
 
 .navbar-link {

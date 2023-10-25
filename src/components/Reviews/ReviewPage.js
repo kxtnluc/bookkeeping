@@ -1,13 +1,14 @@
-import { Typography } from "@mui/material"
+import { Button, Rating, StyledEngineProvider, Typography } from "@mui/material"
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
-import { getReviewById } from "../../services/reviewService"
+import { useParams, useNavigate } from "react-router-dom"
+import { deleteReview, getReviewById } from "../../services/reviewService"
 import "./ReviewPage.css"
 
 
-export const ReviewPage = () => {
+export const ReviewPage = ({ currentUser }) => {
 
     const { reviewId } = useParams()
+    const navigate = useNavigate()
 
     const [review, setReview] = useState({})
 
@@ -16,6 +17,15 @@ export const ReviewPage = () => {
             setReview(rArray[0])
         })
     }, [])
+
+    const handleEditClick = () => {
+        navigate(`/thekeep/review/editReview/${review.id}`)
+    }
+
+    const handleDeleteClick = () => {
+        deleteReview(reviewId)
+        navigate(`/thekeep`)
+    }
 
     return (
         <>
@@ -26,12 +36,26 @@ export const ReviewPage = () => {
                     </Typography>
                     <div className="rp-rating">
                         {review.rating}
+                        {/* <Rating readOnly value={review.rating} /> */}
                     </div>
                 </section>
 
                 <section className="rp-body">
                     {review.body}
                 </section>
+                {review.userId === currentUser.id ? (
+                    <section className="rp-edit">
+
+                        <StyledEngineProvider injectFirst>
+                            <Button onClick={handleEditClick} className="rp-edit-btn" variant="contained" type="button">Edit</Button>
+                        </StyledEngineProvider>
+
+                        <StyledEngineProvider injectFirst>
+                            <Button onClick={handleDeleteClick} className="rp-delete-btn" variant="contained" type="button">Delete</Button>
+                        </StyledEngineProvider>
+                    </section>
+                ) : ("")}
+
             </main>
         </>
     )

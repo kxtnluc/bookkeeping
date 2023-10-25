@@ -1,9 +1,15 @@
 .lb-header{
-    padding-top: 5%;
-    display: flex;
     justify-content: center;
-    font-weight: 600;
-    font-family: monospace;
+    padding-top: 3%;
+    border: 3px forestgreen solid;
+    border-radius: 5px;
+    display: flex;
+    margin-left: 14%;
+    margin-right: 14%;
+    margin-bottom: 25px;
+    background-color: #c3841f3b;
+    color: rgb(62, 155, 62);
+    -webkit-text-stroke: 4px;
 
 }
 
@@ -34,7 +40,7 @@
         padding: 6px;
         padding-bottom: 5px;
         margin-top: 12px;
-        margin-bottom: 10px;
+        margin-bottom: 7px;
         background-color: #c3841f70;
 
     }
@@ -46,9 +52,12 @@
 
     .lb-list-item-title {
         max-width: 200px;
+        overflow-y: auto;
+        max-height: 21px;
         color: rgb(175, 122, 23);
         text-align: center;
         border: rgba(136, 91, 8, 0) 1px solid;
+        margin-bottom: 10px;
     }
     .lb-list-item-title:hover {
         transition: 0.25s;

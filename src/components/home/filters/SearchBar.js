@@ -51,7 +51,7 @@ export const SearchBar = () => {
                             sx={{ input: { color: 'green', fontWeight: 600 } }} 
                             variant="standard" 
                             className="keep-search" 
-                            label="Search. . ." 
+                            label="Quick Search. . ." 
                             onChange={handleSearchChange}
                             helperText="Please enter a full book title"
                         />

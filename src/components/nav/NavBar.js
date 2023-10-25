@@ -21,13 +21,15 @@ export const NavBar = ({currentUser}) => {
                 </li>
             </ul>
             <div className="nav-icon">
-                Words
-                <img src="../images/bookkeeplogo.png" alt="" ></img>
+                <div className="title">
+                    BooKKeeping
+                </div>
+                {/* <img src="../images/bookkeeplogo.png" alt="" ></img> */}
             </div>
             <ul className="navbar-right">
-                <li className="navbar-item navbar-item-right">
+                {/* <li className="navbar-item navbar-item-right">
                     <Link to="/library" className="navbar-link">Readlist</Link>
-                </li>
+                </li> */}
                 <li className="navbar-item navbar-item-right">
                     <Link to={`/profile/${currentUser.id}`} className="navbar-link">Profile</Link>
                 </li>

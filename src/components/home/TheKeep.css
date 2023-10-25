@@ -1,5 +1,6 @@
 .keep-header {
-    text-align: center;
+    display: flex;
+    justify-content: center;
     padding-top: 3%;
     border: 3px forestgreen solid;
     border-radius: 5px;
@@ -39,6 +40,8 @@
     }
 
     .kb-list-item-title {
+        overflow-y: auto;
+        max-height: 21px;
         max-width: 200px;
         color: rgb(175, 122, 23);
         text-align: center;

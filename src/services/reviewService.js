@@ -19,3 +19,22 @@ export const createReview = (reviewObj) => {
       body: JSON.stringify(reviewObj)
     })
 }
+
+export const updateReview = (reviewObj) => {
+    return fetch(`http://localhost:8088/reviews/${reviewObj.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(reviewObj)
+    })
+}
+
+export const deleteReview = (reviewId) => {
+    return fetch(`http://localhost:8088/reviews/${reviewId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      }
+    })
+}

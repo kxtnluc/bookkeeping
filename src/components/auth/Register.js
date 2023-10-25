@@ -6,15 +6,13 @@ import { createUser, getUserByEmail } from "../../services/userService"
 export const Register = (props) => {
   const [user, setUser] = useState({
     email: "",
-    fullName: "",
-    cohort: 0,
+    username: "",
   })
   let navigate = useNavigate()
 
   const registerNewUser = () => {
     const newUser = {
       ...user,
-      cohort: parseInt(user.cohort),
     }
 
     createUser(newUser).then((createdUser) => {
@@ -23,11 +21,10 @@ export const Register = (props) => {
           "bookkeep_user",
           JSON.stringify({
             id: createdUser.id,
-            staff: createdUser.isStaff,
           })
         )
 
-        navigate("/")
+        navigate("/thekeep")
       }
     })
   }
@@ -61,9 +58,9 @@ export const Register = (props) => {
             <input
               onChange={updateUser}
               type="text"
-              id="fullName"
+              id="username"
               className="auth-form-input"
-              placeholder="Enter your name"
+              placeholder="Enter a username"
               required
               autoFocus
             />
@@ -77,18 +74,6 @@ export const Register = (props) => {
               id="email"
               className="auth-form-input"
               placeholder="Email address"
-              required
-            />
-          </div>
-        </fieldset>
-        <fieldset className="auth-fieldset">
-          <div>
-            <input
-              onChange={updateUser}
-              type="number"
-              id="cohort"
-              className="auth-form-input"
-              placeholder="Cohort #"
               required
             />
           </div>

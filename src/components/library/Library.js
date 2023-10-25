@@ -129,7 +129,7 @@ export const Library = ({currentUser}) => {
         <main className="lb-whole">
             <StyledEngineProvider injectFirst>
                 <Typography className="lb-header" variant="h1">
-                    Library
+                    LIBRARY
                 </Typography>
             </StyledEngineProvider>
 
