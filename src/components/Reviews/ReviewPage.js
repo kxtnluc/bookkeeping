@@ -38,6 +38,10 @@ export const ReviewPage = ({ currentUser }) => {
                         {review.rating}
                         {/* <Rating readOnly value={review.rating} /> */}
                     </div>
+                    <div className="rp-genre">
+                        {review.genre?.name}
+                        {/* <Rating readOnly value={review.rating} /> */}
+                    </div>
                 </section>
 
                 <section className="rp-body">

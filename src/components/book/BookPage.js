@@ -161,7 +161,7 @@ export const BookPage = ({ currentUser }) => {
                                 src={book.bookImg}
                             />
                         </div>
-                        {userReview ? ( //this isnt working how i wish it would
+                        {/* {userReview ? ( //this isnt working how i wish it would
                             <div className="bp-rating">
                             <StyledEngineProvider injectFirst>
                                 <Stack spacing={1}>
@@ -177,7 +177,7 @@ export const BookPage = ({ currentUser }) => {
                                 </Stack>
                             </StyledEngineProvider>
                         </div>
-                        )}
+                        )} */}
 
                         
                     </article>

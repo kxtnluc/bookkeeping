@@ -1,19 +1,22 @@
-import { Button, Rating, StyledEngineProvider, TextField } from "@mui/material"
+import { Box, Button, InputLabel, Menu, MenuItem, Rating, Select, StyledEngineProvider, TextField } from "@mui/material"
 import { useEffect, useState } from "react"
 import { useParams, useNavigate } from "react-router-dom"
 import { updateReview, getReviewById } from "../../services/reviewService"
+import { getGenres } from "../../services/genreService"
 
 
-export const EditReview = ({currentUser}) => {
+export const EditReview = ({ currentUser }) => {
 
     const { reviewId } = useParams()
     const navigate = useNavigate()
 
     const [review, setReview] = useState({})
+    const [genreList, setGenreList] = useState([])
 
     const [title, setTitle] = useState("")
     const [body, setBody] = useState("")
     const [rating, setRating] = useState(0)
+    const [genre, setGenre] = useState(0)
 
     useEffect(() => {
         getReviewById(reviewId).then((rArray) => {
@@ -26,6 +29,12 @@ export const EditReview = ({currentUser}) => {
 
 
     }, [reviewId])
+
+    useEffect(() => {
+        getGenres().then((gArray) => {
+            setGenreList(gArray)
+        })
+    }, [])
 
 
     const handleTitleChange = (e) => {
@@ -47,11 +56,17 @@ export const EditReview = ({currentUser}) => {
             userId: currentUser.id,
             title: title,
             body: body,
+            genreId: genre,
             rating: rating
         }
         console.log(reviewObj)
         updateReview(reviewObj)
         navigate("/thekeep")
+    }
+
+    const handleGenreChange = (e) => {
+        console.log(e.target.value)
+        setGenre(e.target.value)
     }
 
     return (
@@ -65,7 +80,7 @@ export const EditReview = ({currentUser}) => {
                 <div className="wrp-inputs">
                     <div className="wrp-title">
                         <StyledEngineProvider injectFirst>
-                            <TextField value={title} variant="standard" onChange={handleTitleChange} inputProps={{ maxLength: 50}} className="wrp-title-input" placeholder="Title..." />
+                            <TextField value={title} variant="standard" onChange={handleTitleChange} inputProps={{ maxLength: 50 }} className="wrp-title-input" placeholder="Title..." />
                         </StyledEngineProvider>
                     </div>
                     <div className="wrp-body">
@@ -73,8 +88,30 @@ export const EditReview = ({currentUser}) => {
                             <TextField value={body} onChange={handleBodyChange} className="wrp-body-input" multiline rows={20} maxRows={20} placeholder="Body..." />
                         </StyledEngineProvider>
                     </div>
+                    <div className="wrp-genre">
+                        <Box>
+                            <InputLabel id="genre-label">Genre</InputLabel>
+                            <Select
+                                labelId="genre-label"
+                                id="genre-select"
+                                value={genre}
+                                onChange={handleGenreChange}
+                                label="Status"
+                                sx={{ width: 120, height: 40 }}
+                            >
+                                    <MenuItem value={-1}>
+                                        <em>None</em>
+                                    </MenuItem>
+                                    {genreList.map((g) => {
+                                        return (
+                                                <MenuItem key={g.id} value={g.id}>{g.name}</MenuItem>
+                                                )
+                                        })}
+                            </Select>
+                        </Box>
+                    </div>
                     <div className="wrp-rating">
-                        <Rating defaultValue={rating} precision={0.5} onClick={handleRatingClick}/>
+                        <Rating defaultValue={rating} precision={0.5} onClick={handleRatingClick} />
                     </div>
                 </div>
 
@@ -83,12 +120,12 @@ export const EditReview = ({currentUser}) => {
                         <StyledEngineProvider injectFirst>
                             <Button onClick={handleSubmitEditBtn} type="button" className="wrp-submit-btn" variant="contained">Submit</Button>
                         </StyledEngineProvider>
-                    ):(
+                    ) : (
                         <StyledEngineProvider injectFirst>
                             <Button disabled onClick={handleSubmitEditBtn} type="button" className="wrp-submit-btn" variant="contained">Submit</Button>
                         </StyledEngineProvider>
                     )}
-                    
+
                 </section>
 
             </form>

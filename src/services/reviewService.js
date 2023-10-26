@@ -5,7 +5,7 @@ export const getReviewsWithKeep = () => {
 }
 
 export const getReviewById = (reviewId) => {
-    return fetch(`http://localhost:8088/reviews?_expand=user&_expand=thekeep&id=${reviewId}`).then(
+    return fetch(`http://localhost:8088/reviews?_expand=user&_expand=thekeep&_expand=genre&id=${reviewId}`).then(
         (res) => res.json()
     )
 }

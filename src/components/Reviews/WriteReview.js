@@ -1,7 +1,8 @@
-import { Button, Rating, StyledEngineProvider, TextField, Typography } from "@mui/material"
-import { useState } from "react"
+import { Box, Button, InputLabel, MenuItem, Rating, Select, StyledEngineProvider, TextField, Typography } from "@mui/material"
+import { useEffect, useState } from "react"
 import { useParams, useNavigate } from "react-router-dom"
 import { createReview } from "../../services/reviewService"
+import { getGenres } from "../../services/genreService"
 
 
 export const WriteReview = ({currentUser}) => {
@@ -9,9 +10,20 @@ export const WriteReview = ({currentUser}) => {
     const { keepId } = useParams()
     const navigate = useNavigate()
 
+    const [genreList, setGenreList] = useState([])
+
+
     const [title, setTitle] = useState("")
     const [body, setBody] = useState("")
     const [rating, setRating] = useState(0)
+    const [genre, setGenre] = useState(0)
+
+
+    useEffect(() => {
+        getGenres().then((gArray) => {
+            setGenreList(gArray)
+        })
+    }, [])
 
 
     const handleTitleChange = (e) => {
@@ -26,12 +38,18 @@ export const WriteReview = ({currentUser}) => {
         setRating(parseFloat(e.target.value))
     }
 
+    const handleGenreChange = (e) => {
+        console.log(e.target.value)
+        setGenre(e.target.value)
+    }
+
     const handleSubmitBtn = () => {
         const reviewObj = {
             thekeepId: parseInt(keepId),
             userId: currentUser.id,
             title: title,
             body: body,
+            genreId: genre,
             rating: rating
         }
         createReview(reviewObj)
@@ -56,6 +74,28 @@ export const WriteReview = ({currentUser}) => {
                         <StyledEngineProvider injectFirst>
                             <TextField onChange={handleBodyChange} className="wrp-body-input" multiline rows={20} maxRows={20} placeholder="Body..." />
                         </StyledEngineProvider>
+                    </div>
+                    <div className="wrp-genre">
+                        <Box>
+                            <InputLabel id="genre-label">Genre</InputLabel>
+                            <Select
+                                labelId="genre-label"
+                                id="genre-select"
+                                value={genre}
+                                onChange={handleGenreChange}
+                                label="Status"
+                                sx={{ width: 120, height: 40 }}
+                            >
+                                    <MenuItem value={-1}>
+                                        <em>None</em>
+                                    </MenuItem>
+                                    {genreList.map((g) => {
+                                        return (
+                                                <MenuItem key={g.id} value={g.id}>{g.name}</MenuItem>
+                                                )
+                                        })}
+                            </Select>
+                        </Box>
                     </div>
                     <div className="wrp-rating">
                         <Rating precision={0.5} onClick={handleRatingClick}/>
