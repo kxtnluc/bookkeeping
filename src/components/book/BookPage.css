@@ -33,6 +33,11 @@
                     margin-left: 5%;
                 }
             }
+            .bp-edit-btn{
+                background-color: forestgreen;
+                margin-left: 10rem;
+                margin-top: 10px;
+            }
         }
 
         .bp-title-status-desc-container{
@@ -152,6 +157,103 @@
                 }
             }
 
+        }
+    }
+}
+/* =======================================================EDIT BOOK PAGE============================================== */
+.ebp-top {
+
+    padding-top: 8%;
+
+    .ebp-cover-rating-container{
+
+        float: left;
+
+        .ebp-cover{
+
+            display: flex;
+            margin-left: 5%;
+
+            .ebp-cover-img{
+                border: 3px solid rgb(25, 117, 25);
+                border-radius: 3px;
+                padding: 10px;
+                background-color: #c3841f69;
+            }
+        }
+        
+        .ebp-rating{
+
+            margin-top: 1rem;
+            margin-left: 5%;
+
+            .ebp-rating-2{
+                justify-content: center;
+                margin-left: 5%;
+            }
+        }
+    }
+
+    .ebp-title-status-desc-container{
+        .ebp-title-author-status{
+
+            
+            .ebp-title{
+                width: 500px;
+                margin-left: 3%;
+                margin-right: 2%;
+                margin-top: 2rem;
+
+                font-family: 'Courier New', Courier, monospace;
+                font-weight: 600;
+                float: left;
+            }
+
+            .ebp-author{
+                margin-top: 2rem;
+
+                font-family: 'Courier New', Courier, monospace;
+                font-weight: 600;
+            }
+        }
+        .ebp-desc{
+            border: 3px solid rgb(25, 117, 25);
+            background-color: #c3841f15;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 24px;
+            margin-left: 3%;
+            margin-top: 3%;
+            margin-right: 4%;
+            padding: 25px;
+            width: 1000px;
+            max-height: 18rem;
+            min-height: 18rem;
+
+            overflow-y: auto;
+        }
+    }
+
+}
+
+.ebp-button-section{
+    margin-top: 5rem;
+    .edp-img{
+        margin-left: 7rem;
+        .edp-img-btn{
+            background-color: rgba(34, 139, 139, 0.856);
+        }
+    }
+    .edp-submit{
+        margin-left: 8.5rem;
+        margin-top: 5rem;
+        .edp-sub-btn{
+            width: 100px;
+            background-color: rgba(34, 139, 34, 0.856);
+        }
+        .edp-del-btn{
+            margin-right: 5rem;
+            float: right;
+            width: 100px;
         }
     }
 }

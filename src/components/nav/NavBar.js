@@ -11,7 +11,7 @@ export const NavBar = ({currentUser}) => {
         <div className="navbar-container">
             <ul className="navbar-left">
                 <li className="navbar-item navbar-item-left">
-                    <Link to="/thekeep" className="navbar-link">Home</Link>
+                    <Link to="/thekeep" className="navbar-link">Keep</Link>
                 </li>
                 {/* <li className="navbar-item navbar-item-left">
                     <Link to="/posts/newpost" className="navbar-link">Books</Link>

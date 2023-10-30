@@ -7,6 +7,7 @@ import { Profile } from "../components/profile/Profile"
 import { ReviewPage } from "../components/Reviews/ReviewPage"
 import { WriteReview } from "../components/Reviews/WriteReview"
 import { EditReview } from "../components/Reviews/EditReview"
+import { EditBook } from "../components/book/EditBook"
 
 export const UserView = ({ currentUser }) => {
     return (
@@ -28,6 +29,8 @@ export const UserView = ({ currentUser }) => {
                     <Route path='/thekeep'>
                         <Route index element={<TheKeep />} />
                         <Route path="book/:bookId" element={<BookPage currentUser={currentUser}/>} />
+                        <Route path="book/:bookId/edit" element={<EditBook currentUser={currentUser}/>} />
+
                         <Route path="review/:reviewId" element={<ReviewPage currentUser={currentUser}/>} />
                         <Route path="review/writeReview/:keepId" element={<WriteReview currentUser={currentUser}/>} />
                         <Route path="review/editReview/:reviewId" element={<EditReview currentUser={currentUser}/>} />

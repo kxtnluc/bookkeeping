@@ -161,7 +161,7 @@ export const BookPage = ({ currentUser }) => {
                                 src={book.bookImg}
                             />
                         </div>
-                        {/* {userReview ? ( //this isnt working how i wish it would
+                        {userReview ? ( //this isnt working how i wish it would
                             <div className="bp-rating">
                             <StyledEngineProvider injectFirst>
                                 <Stack spacing={1}>
@@ -177,8 +177,27 @@ export const BookPage = ({ currentUser }) => {
                                 </Stack>
                             </StyledEngineProvider>
                         </div>
-                        )} */}
-
+                        )}
+                        <div>
+                        <StyledEngineProvider injectFirst>
+                            <Button 
+                                className="bp-edit-btn"
+                                variant="contained" 
+                                onClick={() => {
+                                    navigate(`/thekeep/book/${bookId}/edit`, { state: {
+                                        id:book.id, 
+                                        bookName: book.bookName,
+                                        bookId: bookId,
+                                        bookDescription: book.bookDescription,
+                                        bookAuthor: book.bookAuthor,
+                                        bookImg: book.bookImg
+                                    } })
+                                }}
+                            >
+                                Edit
+                            </Button>
+                        </StyledEngineProvider>
+                        </div>
                         
                     </article>
                     <article className="bp-title-status-desc-container">
