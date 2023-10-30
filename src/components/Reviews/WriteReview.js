@@ -103,7 +103,7 @@ export const WriteReview = ({currentUser}) => {
                 </div>
 
                 <section className="wrp-submit">
-                {title !== "" ? (
+                {rating !== 0 ? (
                         <StyledEngineProvider injectFirst>
                             <Button onClick={handleSubmitBtn} type="button" className="wrp-submit-btn" variant="contained">Submit</Button>
                         </StyledEngineProvider>

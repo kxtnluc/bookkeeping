@@ -26,10 +26,9 @@
             .bp-rating{
 
                 margin-top: 1rem;
-                margin-left: 5%;
-
+                margin-left: 3rem;
                 .bp-rating-2{
-                    justify-content: center;
+                    font-size: 3rem;
                     margin-left: 5%;
                 }
             }
@@ -82,6 +81,8 @@
 
 
     .bp-bottom{
+        margin-top: 8rem;
+
         .bp-reviews{
             .bp-r-header{
                 margin-top: 100px;
@@ -108,13 +109,16 @@
                 
             }
 
+
             .r-list-div{
+
                 .r-list{
                     padding-left: 0;
                     list-style: none;
                     display: flex;
                     justify-content: space-evenly;
                     flex-flow: row wrap;
+                    
                     .r-list-item{
                         color: rgb(173, 116, 10);
                         margin-bottom: 20px;

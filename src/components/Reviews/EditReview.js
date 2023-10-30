@@ -111,12 +111,12 @@ export const EditReview = ({ currentUser }) => {
                         </Box>
                     </div>
                     <div className="wrp-rating">
-                        <Rating defaultValue={rating} precision={0.5} onClick={handleRatingClick} />
+                        <Rating value={rating} precision={0.5} onClick={handleRatingClick} />
                     </div>
                 </div>
 
                 <section className="wrp-submit">
-                    {title !== "" ? (
+                    {rating !== 0 ? (
                         <StyledEngineProvider injectFirst>
                             <Button onClick={handleSubmitEditBtn} type="button" className="wrp-submit-btn" variant="contained">Submit</Button>
                         </StyledEngineProvider>

@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
+import {Link} from 'react-router-dom'
 import "./Library.css"
 import { getLibraryByUserId } from "../../services/libraryService"
 import { getBookById } from "../../services/googleBooksService"
-import { StyledEngineProvider, Typography } from "@mui/material"
+import { Button, ButtonGroup, StyledEngineProvider, Typography } from "@mui/material"
 import { LibraryList } from "./LibraryList"
 import { getKeepByBookId } from "../../services/theKeepService"
 
@@ -133,7 +134,28 @@ export const Library = ({currentUser}) => {
                 </Typography>
             </StyledEngineProvider>
 
-            <section className="read-whole">
+            <section className="lb-nav">
+              <StyledEngineProvider injectFirst>
+                <ButtonGroup orientation="vertical" color="success" size="medium" variant="text" aria-label="lb-navbar">
+
+                  <a href="#read-section">
+                    <Button className="btn">Read</Button>
+                  </a>
+
+
+                  <a href="#readlist-section">
+                    <Button className="btn">Readlist</Button>
+                  </a>
+
+                  <a href="#reading-section">
+                    <Button className="btn">Reading</Button>
+                  </a>
+
+                </ButtonGroup>
+              </StyledEngineProvider>
+            </section>
+
+            <section id="read-section" className="read-whole">
 
             <StyledEngineProvider injectFirst>
                 <Typography className="lb-read-header" variant="h2">
@@ -145,7 +167,7 @@ export const Library = ({currentUser}) => {
 
             </section>
 
-            <section className="readlist-whole">
+            <section id="readlist-section" className="readlist-whole">
 
             <StyledEngineProvider injectFirst>
                 <Typography className="lb-read-header" variant="h2">
@@ -157,7 +179,7 @@ export const Library = ({currentUser}) => {
 
             </section>
 
-            <section className="reading-whole">
+            <section id="reading-section" className="reading-whole">
 
             <StyledEngineProvider injectFirst>
                 <Typography className="lb-read-header" variant="h2">

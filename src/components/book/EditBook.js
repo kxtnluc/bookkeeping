@@ -61,8 +61,7 @@ export const EditBook = () => {
 
     const handleDelete = () => {
         console.log('deleting. . .')
-        removeFromKeep(book.id)
-        navigate(`/thekeep`)
+        removeFromKeep(book.id).then(() => {navigate(`/thekeep`)})
     }
 
     const VisuallyHiddenInput = styled('input')({

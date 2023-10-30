@@ -6,7 +6,7 @@ import { createUserBook, deleteUserBook, getUserBookByUserAndBookId, updateUserB
 import "./BookPage.css"
 import { addToKeep, getKeep } from "../../services/theKeepService"
 import { ReviewList } from "./ReviewList"
-import { getReviewsWithKeep } from "../../services/reviewService"
+import { createReview, deleteReview, getReviewsWithKeep, updateReview } from "../../services/reviewService"
 
 export const BookPage = ({ currentUser }) => {
 
@@ -19,6 +19,7 @@ export const BookPage = ({ currentUser }) => {
 
     const [reviews, setReviews] = useState([])
     const [userReview, setUserReview] = useState({})
+    const [rating, setRating] = useState(0)
 
     useEffect(() => {
         getReviewsWithKeep().then((rArray) => {
@@ -29,6 +30,7 @@ export const BookPage = ({ currentUser }) => {
 
             const userRevObj = filteredArray.find(r => r.userId === currentUser.id)
             setUserReview(userRevObj)
+            setRating(userRevObj?.rating)
         })
     }, [book.id, currentUser])
 
@@ -99,6 +101,36 @@ export const BookPage = ({ currentUser }) => {
 
     }, [book.id])
 
+    const handleRatingChange = (e) => {
+
+        setRating(parseFloat(e.target.value))
+
+        if (userReview) { //if the user already has a REVIEW for the book
+            console.log('they do!')
+
+            const updatedReview = {
+                id: userReview.id,
+                thekeepId: userReview.thekeepId,
+                userId: userReview.userId,
+                title: userReview.title,
+                body: userReview.body,
+                genreId: userReview.genreId,
+                rating: parseFloat(e.target.value)
+            }
+            console.log(updatedReview)
+            updateReview(updatedReview)
+        } else {
+            const reviewToPost = {
+                thekeepId: book.id,
+                userId: currentUser.id,
+                title: "",
+                body: "",
+                genreId: 0,
+                rating: parseFloat(e.target.value)
+            }
+            createReview(reviewToPost)
+        }
+    }
 
     const handleChange = (e) => {
 
@@ -144,7 +176,13 @@ export const BookPage = ({ currentUser }) => {
     }
 
     const handleClick = (e) => {
-        navigate(`/thekeep/review/writeReview/${book.id}`)
+        if(userReview){
+            deleteReview(userReview.id).then(() => {
+                navigate(`/thekeep/review/writeReview/${book.id}`)
+            })
+        } else {
+            navigate(`/thekeep/review/writeReview/${book.id}`)
+        }
     }
 
     return (
@@ -161,43 +199,42 @@ export const BookPage = ({ currentUser }) => {
                                 src={book.bookImg}
                             />
                         </div>
-                        {userReview ? ( //this isnt working how i wish it would
+                        {userBook ? ( //this isnt working how i wish it would
                             <div className="bp-rating">
-                            <StyledEngineProvider injectFirst>
                                 <Stack spacing={1}>
-                                    <Rating className="bp-rating-2" name="half-rating-read" size="large" value={userReview.rating} precision={0.5} readOnly />
+                                    <Rating onChange={handleRatingChange} className="bp-rating-2" name="half-rating-read" size="large" value={rating} precision={0.5} />
                                 </Stack>
-                            </StyledEngineProvider>
                         </div>
                         ): (
                             <div className="bp-rating">
-                            <StyledEngineProvider injectFirst>
                                 <Stack spacing={1}>
-                                    <Rating disabled className="bp-rating-2" name="half-rating-read" size="large" defaultValue={0} precision={0.5} readOnly />
+                                    <Rating disabled className="bp-rating-2" name="half-rating-read" size="large" value={null} precision={0.5} />
                                 </Stack>
-                            </StyledEngineProvider>
                         </div>
                         )}
-                        <div>
-                        <StyledEngineProvider injectFirst>
-                            <Button 
-                                className="bp-edit-btn"
-                                variant="contained" 
-                                onClick={() => {
-                                    navigate(`/thekeep/book/${bookId}/edit`, { state: {
-                                        id:book.id, 
-                                        bookName: book.bookName,
-                                        bookId: bookId,
-                                        bookDescription: book.bookDescription,
-                                        bookAuthor: book.bookAuthor,
-                                        bookImg: book.bookImg
-                                    } })
-                                }}
-                            >
-                                Edit
-                            </Button>
-                        </StyledEngineProvider>
-                        </div>
+                        {currentUser.admin ? (
+                            <div>
+                            <StyledEngineProvider injectFirst>
+                                <Button 
+                                    className="bp-edit-btn"
+                                    variant="contained" 
+                                    size="small"
+                                    onClick={() => {
+                                        navigate(`/thekeep/book/${bookId}/edit`, { state: {
+                                            id:book.id, 
+                                            bookName: book.bookName,
+                                            bookId: bookId,
+                                            bookDescription: book.bookDescription,
+                                            bookAuthor: book.bookAuthor,
+                                            bookImg: book.bookImg
+                                        } })
+                                    }}
+                                >
+                                    Edit
+                                </Button>
+                            </StyledEngineProvider>
+                            </div>
+                        ):("")}
                         
                     </article>
                     <article className="bp-title-status-desc-container">
@@ -242,7 +279,7 @@ export const BookPage = ({ currentUser }) => {
 
                         <div className="bp-r-header">
                             Reviews
-                            {userBook?.percentRead === 100 && !userReview ? (
+                            {userBook?.percentRead === 100 && (userReview?.title === "" || !userReview) ? (
                                 <div className="bp-write">
                                     <StyledEngineProvider injectFirst>
                                         <Button onClick={handleClick} className="bp-write-btn" type="button" variant="contained">Write Review</Button>

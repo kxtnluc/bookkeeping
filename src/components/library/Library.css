@@ -13,6 +13,19 @@
 
 }
 
+a{
+    text-align: center;
+}
+
+.lb-nav {
+    float: right;
+    margin-right: 5rem;
+    margin-top: -8rem;
+    .lb-navbar{
+        background-color: forestgreen;
+    }
+}
+
 .lb-read-header{
     display: inline;
     border: 1px rgba(0, 122, 0, 0.384) solid;
