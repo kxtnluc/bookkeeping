@@ -28,13 +28,22 @@ export const UserView = ({ currentUser }) => {
                 <Route path='/'>
                     <Route path='/thekeep'>
                         <Route index element={<TheKeep />} />
-                        <Route path="book/:bookId" element={<BookPage currentUser={currentUser}/>} />
-                        <Route path="book/:bookId/edit" element={<EditBook currentUser={currentUser}/>} />
 
-                        <Route path="review/:reviewId" element={<ReviewPage currentUser={currentUser}/>} />
-                        <Route path="review/writeReview/:keepId" element={<WriteReview currentUser={currentUser}/>} />
-                        <Route path="review/editReview/:reviewId" element={<EditReview currentUser={currentUser}/>} />
+                        <Route path="book">
+                            <Route path=":bookId" element={<BookPage currentUser={currentUser}/>} />
+                            <Route path=":bookId/edit" element={<EditBook currentUser={currentUser}/>} />
+                        </Route>
 
+                        <Route path="review">
+                            <Route path=":reviewId" element={<ReviewPage currentUser={currentUser}/>} />
+                            <Route path="writeReview/:keepId" element={<WriteReview currentUser={currentUser}/>} />
+                            <Route path="editReview/:reviewId" element={<EditReview currentUser={currentUser}/>} />
+                        </Route>
+
+                    </Route>
+
+                    <Route path="/search">
+                        <Route index element={<>a</>}/>
                     </Route>
                     
                     <Route path="/library">

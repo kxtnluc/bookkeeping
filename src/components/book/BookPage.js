@@ -189,6 +189,9 @@ export const BookPage = ({ currentUser }) => {
         <>
             <main className="bp-whole">
                 <section className="bp-top">
+                    <article className="bp-floor">
+                        Floor {book.id}
+                    </article>
                     <article className="bp-cover-rating-container">
                         <div className="bp-cover">
                             <img

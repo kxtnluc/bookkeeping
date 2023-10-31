@@ -12,9 +12,9 @@ export const ReviewList = ({reviews}) => {
                         return (
                             
                             <li key={r.id} className="r-list-item">
-                                <div className="r-username">
+                                <Link to={`/profile/${r.user.id}`} className="r-username">
                                     {r.user.username}
-                                </div>
+                                </Link>
                                 <Link to={`/thekeep/review/${r.id}`}>
                                     <div className="r-inside">
                                         <div className="r-title">

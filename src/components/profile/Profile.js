@@ -1,13 +1,12 @@
 import { Button, StyledEngineProvider, TextField, Typography } from "@mui/material"
 import { useEffect, useState } from "react"
-import {useParams, useNavigate} from "react-router-dom"
+import {useParams} from "react-router-dom"
 import { getUserById, updateUserProfile } from "../../services/userService"
 import "./Profile.css"
 
 export const Profile = ({currentUser}) => {
 
     const {userId} = useParams()
-    const navigate = useNavigate()
 
     const [user, setUser] = useState({})
     const [editMode, setEditMode] = useState(false)

@@ -4,7 +4,22 @@
 
     .bp-top {
 
-        padding-top: 8%;
+        padding-top: 5%;
+
+        .bp-floor{
+            margin-bottom: 30px;
+            margin-right: 94.5rem;
+            font-weight: 900;
+            letter-spacing: 5px;
+            padding-left: 7.3rem;
+            padding-top: 7px;
+            padding-bottom: 7px;
+            border: 3px solid rgb(25, 117, 25);
+            border-left: none;
+            font-size: 34px;
+            background-color: #c3841f69;
+            color: rgb(255, 252, 229);
+        }
 
         .bp-cover-rating-container{
 
@@ -126,6 +141,14 @@
                             font-style: italic;
                             margin-left: 70px;
                             margin-top: 5px;
+                            text-decoration: none;
+                            color: rgb(173, 116, 10);
+                        }
+                        .r-username:hover{
+                            transition: 0.25s;
+                            color: rgb(110, 74, 6);
+                            background-color: rgba(211, 143, 17, 0.151);
+
                         }
                         .r-inside{
                             border: 2px solid rgba(34, 139, 34, 0.5);
