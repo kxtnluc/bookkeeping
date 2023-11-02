@@ -83,3 +83,62 @@ a{
      text-decoration: none;  
     }
 }
+
+.lrl-list {
+
+    display: flex;
+    justify-content: space-around;
+    flex-flow: row wrap;
+    list-style: none;
+    border: 1px solid rgb(0, 0, 0);
+    margin-left: 4%;
+    margin-right: 4%;
+    background-color: #c3841f3b;
+    padding-left: 0;
+    
+    .lrl-list-item{
+        width: 30rem;
+    }
+
+    .lrl-list-item-img{
+        float: left;
+        border: 1px solid rgb(0, 0, 0);
+        padding: 6px;
+        padding-bottom: 5px;
+        margin-top: 12px;
+        margin-bottom: 7px;
+        background-color: #c3841f70;
+        transition: 0.15s;
+    }
+
+    .lrl-list-item-title {
+        font-size: 24px;
+        font-weight: 600;
+        margin-left: 28px;
+        margin-right: 28px;
+        overflow-y: auto;
+        width: 400px;
+        color: rgb(126, 88, 18);
+        text-align: center;
+        margin-bottom: 10px;
+        padding: 5px;
+        transition: 0.25s;
+    }
+    .lrl-list-item-title:hover {
+        color: rgb(136, 91, 8);
+        background-color: #c3841f3b;
+    }
+
+    .lb-link{
+     text-decoration: none;  
+    }
+
+    .lrl-progress{
+        .lrl-progress-number{
+            text-align: center;
+            font-size: 24px;
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: 1000;
+        }
+    }
+}

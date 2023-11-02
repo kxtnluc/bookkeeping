@@ -27,37 +27,32 @@ export const NavBar = ({ currentUser }) => {
         <div className="navbar-container">
             <ul className="navbar-left">
                 <li className="navbar-item navbar-item-left">
-                    <Link to="/thekeep" className="navbar-link"><Chip className="library-icon" sx={{ color: "white", fontWeight: 600, fontSize: "19px" }} label='Keep' icon={<AccountBalanceIcon color="white" />} /></Link>
+                    <Link to="/thekeep" className="navbar-link"><Button className="library-icon" sx={{ color: "white", fontWeight: 600, fontSize: "19px" }} label='Keep' startIcon={<AccountBalanceIcon color="white" />}>Keep</Button></Link>
                 </li>
                 {/* <li className="navbar-item navbar-item-left">
                     <Link to="/posts/newpost" className="navbar-link">Books</Link>
                 </li> */}
                 <li className="navbar-item navbar-item-left">
-                    <Link to="/library" className="navbar-link"><Chip className="library-icon" sx={{ color: "white", fontWeight: 600, fontSize: "19px" }} label='Library' icon={<BookIcon color="white" />} /></Link>
+                    <Link to="/library" className="navbar-link"><Button className="library-icon" sx={{ color: "white", fontWeight: 600, fontSize: "19px" }} label='Library' startIcon={<BookIcon color="white" />}>Library</Button></Link>
                 </li>
                 <li className="navbar-item navbar-item-left">
-                    <Link to="/search" className="navbar-link"><Chip className="search-icon" sx={{ color: "white", fontWeight: 600, fontSize: "19px" }} label='Search' icon={<SearchIcon color="whitesmoke" />} /></Link>
+                    <Link to="/search" className="navbar-link"><Button className="search-icon" sx={{ color: "white", fontWeight: 600, fontSize: "19px" }} label='Search' startIcon={<SearchIcon color="whitesmoke" />}>Search</Button></Link>
                 </li>
             </ul>
-            <div className="nav-icon">
-                <div className="title">
-                    BooKKeeping
-                </div>
-                {/* <img src="../images/bookkeeplogo.png" alt="" ></img> */}
-            </div>
             <ul className="navbar-right">
 
 
                 <div>
                     <Button
                         sx={{color: 'white'}}
+                        size="large"
                         variant="text"
                         aria-controls={open ? 'basic-menu' : undefined}
                         aria-haspopup='true'
                         aria-expanded={open ? 'true' : undefined}
                         onClick={handleClick}
                     >
-                        <MenuIcon color="white"/>
+                        <MenuIcon sx={{fontSize: 40}} color="white"/>
                     </Button>
                     <Menu
                         id="basic-menu"

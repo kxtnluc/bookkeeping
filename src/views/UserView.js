@@ -8,6 +8,7 @@ import { ReviewPage } from "../components/Reviews/ReviewPage"
 import { WriteReview } from "../components/Reviews/WriteReview"
 import { EditReview } from "../components/Reviews/EditReview"
 import { EditBook } from "../components/book/EditBook"
+import { SearchPage } from "../components/search/SearchPage"
 
 export const UserView = ({ currentUser }) => {
     return (
@@ -43,7 +44,7 @@ export const UserView = ({ currentUser }) => {
                     </Route>
 
                     <Route path="/search">
-                        <Route index element={<>a</>}/>
+                        <Route index element={<SearchPage />}/>
                     </Route>
                     
                     <Route path="/library">

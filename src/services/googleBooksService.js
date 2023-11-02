@@ -26,4 +26,10 @@ export const getBookBySelfLink = (selfLink) => {
     )
 }
 
-//=============================================================
+//==============================================================BY Url====================================================================
+
+export const getBookByQuerry = (querry) => {
+    return fetch(`https://www.googleapis.com/books/v1/volumes?key=${apiKey}&${querry}`).then(
+        (res) => res.json()
+    )
+}

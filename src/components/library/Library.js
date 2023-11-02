@@ -4,7 +4,7 @@ import "./Library.css"
 import { getLibraryByUserId } from "../../services/libraryService"
 import { getBookById } from "../../services/googleBooksService"
 import { Button, ButtonGroup, StyledEngineProvider, Typography } from "@mui/material"
-import { LibraryList } from "./LibraryList"
+import { LibraryList, LibraryReadingList, LibraryReadingListItem } from "./LibraryList"
 import { getKeepByBookId } from "../../services/theKeepService"
 
 export const Library = ({currentUser}) => {
@@ -71,6 +71,7 @@ export const Library = ({currentUser}) => {
           const readBooksArray = await Promise.all(
             userReadBooksArray.map(async (urb) => {
               const bObj = await getKeepByBookId(urb.bookId);
+              bObj[0].percentRead = urb.percentRead
               return bObj[0];
             })
           );
@@ -85,7 +86,10 @@ export const Library = ({currentUser}) => {
           const readListBooksArray = await Promise.all(
             userReadlistBooksArray.map(async (url) => {
               const bObj = await getKeepByBookId(url.bookId);
+              bObj[0].percentRead = url.percentRead
               return bObj[0];
+              // console.log(url)
+              // console.log(bObj[0])
             })
           );
       
@@ -97,6 +101,7 @@ export const Library = ({currentUser}) => {
           const readingBooksArray = await Promise.all(
             userReadingBooksArray.map(async (urr) => {
               const bObj = await getKeepByBookId(urr.bookId);
+              bObj[0].percentRead = urr.percentRead
               return bObj[0];
             })
           );
@@ -186,8 +191,13 @@ export const Library = ({currentUser}) => {
                     Reading
                 </Typography>
             </StyledEngineProvider>
+            <ul className="lrl-list">
+                {reading.map((rr) => {
+                  return <LibraryReadingListItem userBooks={userBooks} book={rr} />
+                })}
 
-                <LibraryList books={reading}/>
+            </ul>
+                {/* <LibraryReadingList reading={reading}/> */}
             </section>
 
         </main>
